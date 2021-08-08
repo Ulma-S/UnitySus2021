@@ -8,7 +8,7 @@ namespace UnitySus2021.Sample01.Player {
     public class PlayerMover : MonoBehaviour {
         [SerializeField] private Rigidbody2D m_rb;
         [SerializeField] private Animator m_animator;
-        [SerializeField] private KeyboardInputProvider m_inputProvider;
+        private KeyboardInputProvider m_inputProvider;
 
         // Playerのステータスを設定 //
         [SerializeField] private float m_moveSpeed = 2.0f;
@@ -19,6 +19,10 @@ namespace UnitySus2021.Sample01.Player {
         private bool m_isGround = false;
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int IsJump = Animator.StringToHash("IsJump");
+
+        private void Start() {
+            m_inputProvider = FindObjectOfType<KeyboardInputProvider>();
+        }
 
         private void Update() {
             Move();
