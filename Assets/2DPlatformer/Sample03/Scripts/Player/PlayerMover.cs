@@ -1,27 +1,27 @@
 using UnityEngine;
 using UnitySus2021.InputSystem;
+using UnitySus2021.Sample02;
+using UnitySus2021.Util;
 
-namespace UnitySus2021.Sample02 {
+namespace UnitySus2021.Sample03 {
     /// <summary>
     /// Playerの移動を管理するメソッド.
     /// </summary>
     public class PlayerMover : MonoBehaviour { 
         [SerializeField] private Rigidbody2D m_rb;
         [SerializeField] private Animator m_animator;
-        private KeyboardInputProvider m_inputProvider;
-
-        // Playerのステータスを設定 //
         [SerializeField] private PlayerStatus m_playerStatus;
-        // --------------------- //
+        private IInputProvider m_inputProvider;
         
         private bool m_isGround = false;
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int IsJump = Animator.StringToHash("IsJump");
 
         private void Start() {
-            m_inputProvider = FindObjectOfType<KeyboardInputProvider>();
+            //ServiceLocatorで依存を注入する.
+            m_inputProvider = Locator.Resolve<IInputProvider>();
         }
-
+        
         private void Update() {
             Move();
             
@@ -40,8 +40,6 @@ namespace UnitySus2021.Sample02 {
         /// </summary>
         private void Move() {
             var velocity = m_rb.velocity;
-            
-            //ScriptableObjectからステータスを呼び出す.
             velocity.x = m_playerStatus.MoveSpeed * m_inputProvider.HorizontalInput;
             m_rb.velocity = velocity;
             
@@ -61,8 +59,6 @@ namespace UnitySus2021.Sample02 {
             }else if (m_inputProvider.HorizontalInput < 0.0f) {
                 dir = -1.0f;
             }
-            
-            //ScriptableObjectからステータスを呼び出す.
             m_rb.AddForce(new Vector2(1.0f * dir, 3.0f).normalized * m_playerStatus.JumpForce);
             
             m_animator.SetBool(IsJump, true);

@@ -143,7 +143,6 @@ MonoBehaviour:
   m_moveSpeed: 2
   m_jumpForce: 250
   m_localGravityScale: 10
-  m_inputProvider: {fileID: 5104534818211707132, guid: 899e27bf6d8c42845bf1dbb3ad1bceee, type: 3}
 --- !u!70 &8648473182623856622
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

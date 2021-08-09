@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnitySus2021.InputSystem;
 
-namespace UnitySus2021.Sample01.Player {
+namespace UnitySus2021.Sample01 {
     /// <summary>
     /// Playerの移動を管理するクラス.
     /// </summary>
@@ -11,9 +11,9 @@ namespace UnitySus2021.Sample01.Player {
         private KeyboardInputProvider m_inputProvider;
 
         // Playerのステータスを設定 //
-        [SerializeField] private float m_moveSpeed = 2.0f;
-        [SerializeField] private float m_jumpForce = 300.0f;
-        [SerializeField] private float m_localGravityScale = 2.0f;
+        [SerializeField] private float m_moveSpeed = 2f;
+        [SerializeField] private float m_jumpForce = 300f;
+        [SerializeField] private float m_localGravityScale = 2f;
         // --------------------- //
         
         private bool m_isGround = false;

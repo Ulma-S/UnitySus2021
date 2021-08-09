@@ -3,67 +3,47 @@ using UnitySus2021.InputSystem;
 using UnitySus2021.Sample02;
 using UnitySus2021.Util;
 
-namespace UnitySus2021.Sample03.Player {
-    /// <summary>
-    /// Playerの移動を管理するメソッド.
-    /// </summary>
-    public class PlayerMover : MonoBehaviour { 
-        [SerializeField] private Rigidbody2D m_rb;
+namespace UnitySus2021.Sample03 {
+    public class PlayerMoveState : PlayerStateBase {
         [SerializeField] private Animator m_animator;
+        [SerializeField] private Rigidbody2D m_rb;
         [SerializeField] private PlayerStatus m_playerStatus;
         private IInputProvider m_inputProvider;
-        
-        private bool m_isGround = false;
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int IsJump = Animator.StringToHash("IsJump");
+        
+        protected override void Initialize() {
+            stateMachine.RegisterState(EPlayerStateType.Move, this);
 
-        private void Start() {
-            //ServiceLocatorで依存を注入する.
             m_inputProvider = Locator.Resolve<IInputProvider>();
         }
-        
-        private void Update() {
+
+        public override void OnEnter() {
+        }
+
+        public override void OnUpdate() {
             Move();
             
-            //地上にいるときジャンプが入力されたらジャンプする.
-            if (m_inputProvider.IsJumpPressed && m_isGround) {
-                Jump();
+            //移動入力の終了時IdleStateに遷移する.
+            if (Mathf.Abs(m_inputProvider.HorizontalInput) <= 0.001f) {
+                stateMachine.ChangeState(EPlayerStateType.Idle);
             }
             
             ApplyDirection();
             ApplyLocalGravity();
         }
 
-        
-        /// <summary>
-        /// 移動メソッド.
-        /// </summary>
+        public override void OnExit() {
+            m_animator.SetFloat(Speed, 0f);
+        }
+
         private void Move() {
             var velocity = m_rb.velocity;
             velocity.x = m_playerStatus.MoveSpeed * m_inputProvider.HorizontalInput;
             m_rb.velocity = velocity;
             
-            m_animator.SetFloat(Speed, Mathf.Abs(m_rb.velocity.x));
+            m_animator.SetFloat(Speed, m_rb.velocity.x);
         }
-
-        
-        /// <summary>
-        /// ジャンプメソッド.
-        /// </summary>
-        private void Jump() {
-            m_isGround = false;
-
-            var dir = 0.0f;
-            if (m_inputProvider.HorizontalInput > 0.0f) {
-                dir = 1.0f;
-            }else if (m_inputProvider.HorizontalInput < 0.0f) {
-                dir = -1.0f;
-            }
-            m_rb.AddForce(new Vector2(1.0f * dir, 3.0f).normalized * m_playerStatus.JumpForce);
-            
-            m_animator.SetBool(IsJump, true);
-        }
-
         
         /// <summary>
         /// 方向を反映するメソッド.
@@ -88,16 +68,9 @@ namespace UnitySus2021.Sample03.Player {
             m_rb.velocity = velocity;
         }
 
-        private void OnCollisionEnter2D(Collision2D other) {
-            if (other.gameObject.CompareTag("Ground")) {
-                m_isGround = true;
-                m_animator.SetBool(IsJump, false);
-            }
-        }
-
         private void Reset() {
-            m_rb = GetComponent<Rigidbody2D>();
             m_animator = GetComponent<Animator>();
+            m_rb = GetComponent<Rigidbody2D>();
         }
     }
 }
