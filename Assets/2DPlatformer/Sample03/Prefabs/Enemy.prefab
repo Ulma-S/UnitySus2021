@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 872626995}
   - component: {fileID: 872626994}
   - component: {fileID: 872626993}
+  - component: {fileID: 2351916474503439892}
   m_Layer: 5
   m_Name: EnemyUICanvas
   m_TagString: Untagged
@@ -176,6 +177,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2351916474503439892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872626992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97e4f313343eb94b8abe727dee8bc83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1475060790
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4230f741c0698540aed04515e7e4c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_explosion: {fileID: 6620218101896745552, guid: 1f926f03672ed194dafb168046ec0555, type: 3}
 --- !u!1 &1558359048
 GameObject:
   m_ObjectHideFlags: 0

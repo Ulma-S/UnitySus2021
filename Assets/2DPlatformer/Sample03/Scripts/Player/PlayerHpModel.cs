@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnitySus2021.Sample02;
 using UnitySus2021.Util;
@@ -7,6 +8,7 @@ namespace UnitySus2021.Sample03 {
         private float m_maxHp;
         private float m_currentHp;
         public float HpPercent => m_currentHp / m_maxHp;
+        public event Action OnDamagedHandler;
         
         private void Start() {
             m_maxHp = Locator.Resolve<PlayerStatus>().MaxHp;
@@ -21,6 +23,7 @@ namespace UnitySus2021.Sample03 {
 
         public void ApplyDamage(int value) {
             m_currentHp -= value;
+            OnDamagedHandler?.Invoke();
         }
     }
 }

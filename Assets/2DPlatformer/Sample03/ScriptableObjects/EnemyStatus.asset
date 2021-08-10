@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyStatus
   m_EditorClassIdentifier: 
   MoveSpeed: 1
-  MaxHp: 500
+  MaxHp: 200
   WeakAttackPower: 3
   StrongAttackPower: 6
   StrongAttackInterval: 2
