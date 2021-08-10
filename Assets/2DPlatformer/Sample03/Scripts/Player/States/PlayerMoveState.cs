@@ -7,15 +7,16 @@ namespace UnitySus2021.Sample03 {
     public class PlayerMoveState : PlayerStateBase {
         [SerializeField] private Animator m_animator;
         [SerializeField] private Rigidbody2D m_rb;
-        [SerializeField] private PlayerStatus m_playerStatus;
         private IInputProvider m_inputProvider;
         private static readonly int Speed = Animator.StringToHash("Speed");
-        private static readonly int IsJump = Animator.StringToHash("IsJump");
-        
+        private float m_moveSpeed;
+
         protected override void Initialize() {
-            stateMachine.RegisterState(EPlayerStateType.Move, this);
+            stateMachine.RegisterState(EPlayerStateType.Run, this);
 
             m_inputProvider = Locator.Resolve<IInputProvider>();
+
+            m_moveSpeed = Locator.Resolve<PlayerStatus>().MoveSpeed;
         }
 
         public override void OnEnter() {
@@ -23,26 +24,37 @@ namespace UnitySus2021.Sample03 {
 
         public override void OnUpdate() {
             Move();
+
+            //ジャンプボタンが入力されたらJumpStateに遷移する.
+            if (m_inputProvider.IsJumpPressed) {
+                stateMachine.ChangeState(EPlayerStateType.Jump);
+            }
             
             //移動入力の終了時IdleStateに遷移する.
             if (Mathf.Abs(m_inputProvider.HorizontalInput) <= 0.001f) {
                 stateMachine.ChangeState(EPlayerStateType.Idle);
             }
             
+            //攻撃ボタンが入力されたらAttackStateに遷移する.
+            if (m_inputProvider.IsAttackPressed) {
+                stateMachine.ChangeState(EPlayerStateType.Attack);
+            }
+            
             ApplyDirection();
-            ApplyLocalGravity();
         }
 
         public override void OnExit() {
-            m_animator.SetFloat(Speed, 0f);
+            var velocity = m_rb.velocity;
+            velocity.x = 0f;
+            m_rb.velocity = velocity;
         }
 
         private void Move() {
             var velocity = m_rb.velocity;
-            velocity.x = m_playerStatus.MoveSpeed * m_inputProvider.HorizontalInput;
+            velocity.x = m_moveSpeed * m_inputProvider.HorizontalInput;
             m_rb.velocity = velocity;
             
-            m_animator.SetFloat(Speed, m_rb.velocity.x);
+            m_animator.SetFloat(Speed, Mathf.Abs(m_rb.velocity.x));
         }
         
         /// <summary>
@@ -56,16 +68,6 @@ namespace UnitySus2021.Sample03 {
                 localScale.x = -Mathf.Abs(localScale.x);
             }
             transform.localScale = localScale;
-        }
-
-
-        /// <summary>
-        /// 重力を反映する.
-        /// </summary>
-        private void ApplyLocalGravity() {
-            var velocity = m_rb.velocity;
-            velocity.y -= m_playerStatus.LocalGravityScale * Time.deltaTime;
-            m_rb.velocity = velocity;
         }
 
         private void Reset() {

@@ -5,7 +5,8 @@ namespace UnitySus2021.Sample03 {
     public enum EPlayerStateType {
         None,
         Idle,
-        Move,
+        Run,
+        Jump,
         Attack,
     }
     
