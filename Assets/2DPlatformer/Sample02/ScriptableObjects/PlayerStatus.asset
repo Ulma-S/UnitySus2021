@@ -15,3 +15,6 @@ MonoBehaviour:
   MoveSpeed: 2
   JumpForce: 300
   LocalGravityScale: 10
+  MaxHp: 100
+  WeakAttackPower: 10
+  StrongAttackPower: 20

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnitySus2021.Util;
 
 namespace UnitySus2021.Sample03 {
     public class EnemyRunTask : EnemyTaskBase {
@@ -7,7 +6,6 @@ namespace UnitySus2021.Sample03 {
 
         private readonly Animator m_animator;
         private readonly Rigidbody2D m_rb;
-        private readonly EnemyStatus m_enemyStatus;
         private static readonly int Speed = Animator.StringToHash("Speed");
 
         private float m_elapsedTime = 0f;
@@ -15,19 +13,16 @@ namespace UnitySus2021.Sample03 {
         public EnemyRunTask(GameObject parent) : base(parent) {
             m_animator = self.GetComponent<Animator>();
             m_rb = self.GetComponent<Rigidbody2D>();
-            m_enemyStatus = Locator.Resolve<EnemyStatus>();
         }
         
         public override void OnEnter() {
-            
-
             m_elapsedTime = 0f;
         }
 
         public override bool OnUpdate() {
             //速度を反映.
             var velocity = m_rb.velocity;
-            velocity.x = GetPlayerDir() * m_enemyStatus.MoveSpeed;
+            velocity.x = GetPlayerDir() * enemyStatus.MoveSpeed;
             m_rb.velocity = velocity;
             
             //方向を反映.
@@ -37,7 +32,7 @@ namespace UnitySus2021.Sample03 {
             
             //経過時間を計算.
             m_elapsedTime += Time.deltaTime;
-            if (m_elapsedTime > m_enemyStatus.MaxRunTime) {
+            if (m_elapsedTime > enemyStatus.MaxRunTime) {
                 return true;
             }
             return false;

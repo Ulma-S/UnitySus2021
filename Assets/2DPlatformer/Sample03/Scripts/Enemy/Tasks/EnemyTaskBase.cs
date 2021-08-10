@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnitySus2021.Util;
 
 namespace UnitySus2021.Sample03 {
     public abstract class EnemyTaskBase : ITask<EEnemyTaskType> {
         public virtual EEnemyTaskType TaskType { get; protected set; } = EEnemyTaskType.Idle;
         protected GameObject self { get; } = null;
         protected GameObject player { get; } = null;
+        protected EnemyStatus enemyStatus { get; } = null;
 
         protected EnemyTaskBase(GameObject self) {
             this.self = self;
             player = GameObject.FindWithTag("Player");
+            enemyStatus = Locator.Resolve<EnemyStatus>();
         }
 
         public abstract void OnEnter();

@@ -16,7 +16,7 @@ namespace UnitySus2021.Sample03 {
         public override bool OnUpdate() {
             //一定時間後にIdleTaskを終了.
             m_elapsedTime += Time.deltaTime;
-            if (m_elapsedTime > 2f) {
+            if (m_elapsedTime > enemyStatus.IdleTime) {
                 return true;
             }
             return false;

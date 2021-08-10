@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc1daad178df1d4e92aac625319a85b, type: 3}
   m_Name: EnemyStatus
   m_EditorClassIdentifier: 
-  MoveSpeed: 1.5
-  Hp: 500
+  MoveSpeed: 1
+  MaxHp: 500
   WeakAttackPower: 3
   StrongAttackPower: 6
-  AttackInterval: 2
+  StrongAttackInterval: 2
+  WeakAttackInterval: 1
+  IdleTime: 1
   MaxRunTime: 2

@@ -17,8 +17,11 @@ namespace UnitySus2021.Sample03 {
         }
 
         public override bool OnUpdate() {
-            if (m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f) {
-                return true;
+            //StrongAttackのアニメーション終了時にTaskを終了する.
+            if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("StrongAttack")) {
+                if (m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f) {
+                    return true;
+                }
             }
             return false;
         }

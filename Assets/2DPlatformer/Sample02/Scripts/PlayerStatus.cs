@@ -6,5 +6,8 @@ namespace UnitySus2021.Sample02 {
         public float MoveSpeed;
         public float JumpForce;
         public float LocalGravityScale;
+        public float MaxHp;
+        public int WeakAttackPower;
+        public int StrongAttackPower;
     }
 }

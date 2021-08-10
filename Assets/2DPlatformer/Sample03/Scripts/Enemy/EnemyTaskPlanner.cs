@@ -34,7 +34,11 @@ namespace UnitySus2021.Sample03 {
             //Playerが範囲内にいる場合
             if (m_rangeController.IsInRange) {
                 //前回が攻撃なら待機する.
-                if (m_taskSystem.PrevTaskType == EEnemyTaskType.WeakAttack || m_taskSystem.PrevTaskType == EEnemyTaskType.StrongAttack) {
+                if (m_taskSystem.PrevTaskType == EEnemyTaskType.WeakAttack) {
+                    m_taskSystem.EnqueueTask(EEnemyTaskType.Idle);
+                }
+                else if(m_taskSystem.PrevTaskType == EEnemyTaskType.StrongAttack) {
+                    m_taskSystem.EnqueueTask(EEnemyTaskType.Idle);
                     m_taskSystem.EnqueueTask(EEnemyTaskType.Idle);
                 }
                 //それ以外ならランダムで攻撃を選択する.

@@ -13,14 +13,17 @@ namespace UnitySus2021.Sample03 {
         
         public override void OnEnter() {
             m_animator.SetBool(IsWeakAttack, true);
-            
             ApplyLocalScale();
         }
 
         public override bool OnUpdate() {
-            if (m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) {
-                return true;
+            //StrongAttackのアニメーション終了時にTaskを終了する.
+            if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("WeakAttack")) {
+                if (m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) {
+                    return true;
+                }
             }
+
             return false;
         }
 
