@@ -4,7 +4,7 @@ using UnitySus2021.Sample02;
 using UnitySus2021.Util;
 
 namespace UnitySus2021.Sample03 {
-    public enum EGameStatus {
+    public enum EGameState {
         Play,
         GameClear,
         GameOver,
@@ -13,7 +13,7 @@ namespace UnitySus2021.Sample03 {
     public class GameManager : MonoBehaviour {
         [SerializeField] private PlayerStatus m_playerStatus;
         [SerializeField] private EnemyStatus m_enemyStatus;
-        public static EGameStatus GameStatus { get; set; } = EGameStatus.Play;
+        public static EGameState GameState { get; set; } = EGameState.Play;
         
         private void Awake() {
             //キーボード入力の参照をServiceLocatorに登録する.

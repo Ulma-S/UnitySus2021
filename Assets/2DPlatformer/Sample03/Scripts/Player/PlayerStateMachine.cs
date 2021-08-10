@@ -30,7 +30,9 @@ namespace UnitySus2021.Sample03 {
         private void Update() {
             //現在のStateを更新する.
             if (m_currentState != null) {
-                m_currentState.OnUpdate();
+                if (GameManager.GameState == EGameState.Play) {
+                    m_currentState.OnUpdate();
+                }
             }
         }
 

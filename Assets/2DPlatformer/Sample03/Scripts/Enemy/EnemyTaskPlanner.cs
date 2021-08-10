@@ -23,11 +23,14 @@ namespace UnitySus2021.Sample03 {
         }
 
         private void Update() {
-            //Taskがすべて終了したら新たにTaskを入れる.
-            if (m_taskSystem.IsEndAllTasks) {
-                SelectTask();
+            if (GameManager.GameState == EGameState.Play) {
+                //Taskがすべて終了したら新たにTaskを入れる.
+                if (m_taskSystem.IsEndAllTasks) {
+                    SelectTask();
+                }
+
+                m_taskSystem.UpdateTask();
             }
-            m_taskSystem.UpdateTask();
         }
 
         private void SelectTask() {

@@ -14,7 +14,7 @@ namespace UnitySus2021.Sample03 {
 
         private void Update() {
             if (m_currentHp <= 0f) {
-                GameManager.GameStatus = EGameStatus.GameClear;
+                GameManager.GameState = EGameState.GameClear;
             }
         }
 
