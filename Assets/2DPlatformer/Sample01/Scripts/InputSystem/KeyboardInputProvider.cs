@@ -10,6 +10,7 @@ namespace UnitySus2021.InputSystem {
         public bool IsAttackPressed { get; private set; }
 
         private void Update() {
+            //入力値の更新.
             HorizontalInput = Input.GetAxisRaw("Horizontal");
             IsJumpPressed = Input.GetKeyDown(KeyCode.Space);
             IsAttackPressed = Input.GetKeyDown(KeyCode.J);

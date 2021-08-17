@@ -1,6 +1,9 @@
 using UnityEngine;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// Enemyの弱攻撃Taskを管理するクラス.
+    /// </summary>
     public class EnemyWeakAttackTask : EnemyTaskBase {
         public override EEnemyTaskType TaskType { get; protected set; } = EEnemyTaskType.WeakAttack;
 
@@ -12,7 +15,10 @@ namespace UnitySus2021.Sample03 {
         }
         
         public override void OnEnter() {
+            //弱攻撃アニメーション再生.
             m_animator.SetBool(IsWeakAttack, true);
+            
+            //方向を反映 (攻撃中は方向を変更しない).
             ApplyLocalScale();
         }
 
@@ -23,11 +29,11 @@ namespace UnitySus2021.Sample03 {
                     return true;
                 }
             }
-
             return false;
         }
 
         public override void OnExit() {
+            //弱攻撃アニメーション終了.
             m_animator.SetBool(IsWeakAttack, false);
         }
     }

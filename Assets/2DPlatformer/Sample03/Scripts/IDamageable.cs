@@ -1,9 +1,12 @@
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// ダメージ判定を提供するインターフェース.
+    /// </summary>
     public interface IDamageable {
         /// <summary>
-        /// Damageを与える.
+        /// ダメージを与えるメソッド.
         /// </summary>
-        /// <param name="value"></param>
-        void ApplyDamage(int value);
+        /// <param name="attackValue">攻撃側の攻撃力</param>
+        void ApplyDamage(int attackValue);
     }
 }

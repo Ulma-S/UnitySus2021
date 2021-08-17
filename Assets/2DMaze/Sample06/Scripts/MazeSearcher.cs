@@ -3,7 +3,13 @@ using UnityEngine;
 using UnitySus2021.Sample05;
 
 namespace UnitySus2021.Sample06 {
+    /// <summary>
+    /// 迷路の経路を探索するクラス.
+    /// </summary>
     public class MazeSearcher : MonoBehaviour {
+        /// <summary>
+        /// 迷路のマスごとの状態.
+        /// </summary>
         private enum EMazeStatus {
             Open,
             Close,

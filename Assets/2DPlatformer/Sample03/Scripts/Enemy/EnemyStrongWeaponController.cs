@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnitySus2021.Util;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// Enemyの強攻撃用武器を制御するクラス.
+    /// </summary>
     public class EnemyStrongWeaponController : MonoBehaviour {
         private int m_attackPower;
 

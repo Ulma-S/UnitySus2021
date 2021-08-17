@@ -2,6 +2,7 @@ using UnityEngine;
 using UnitySus2021.Util;
 
 namespace UnitySus2021.Sample03 {
+    //Enemyの弱攻撃用武器を制御するクラス.
     public class EnemyWeakWeaponController : MonoBehaviour {
         private int m_attackPower;
 

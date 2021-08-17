@@ -1,6 +1,9 @@
 using UnityEngine;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// Playerの移動Stateを制御するクラス.
+    /// </summary>
     public class PlayerMoveState : PlayerStateBase {
         [SerializeField] private Animator m_animator;
         [SerializeField] private Rigidbody2D m_rb;
@@ -8,7 +11,9 @@ namespace UnitySus2021.Sample03 {
         private float m_moveSpeed;
 
         protected override void Initialize() {
+            //Stateの登録.
             stateMachine.RegisterState(EPlayerStateType.Run, this);
+            
             m_moveSpeed = playerStatus.MoveSpeed;
         }
 
@@ -16,6 +21,7 @@ namespace UnitySus2021.Sample03 {
         }
 
         public override void OnUpdate() {
+            //移動の更新.
             Move();
 
             //ジャンプボタンが入力されたらJumpStateに遷移する.
@@ -33,20 +39,26 @@ namespace UnitySus2021.Sample03 {
                 stateMachine.ChangeState(EPlayerStateType.Attack);
             }
             
+            //方向の更新.
             ApplyDirection();
         }
 
         public override void OnExit() {
+            //速度を0にする.
             var velocity = m_rb.velocity;
             velocity.x = 0f;
             m_rb.velocity = velocity;
         }
 
+        /// <summary>
+        /// 移動用メソッド.
+        /// </summary>
         private void Move() {
             var velocity = m_rb.velocity;
             velocity.x = m_moveSpeed * inputProvider.HorizontalInput;
             m_rb.velocity = velocity;
             
+            //AnimatorのSpeed変数に0を設定する.
             m_animator.SetFloat(Speed, Mathf.Abs(m_rb.velocity.x));
         }
 

@@ -2,10 +2,25 @@ using UnityEngine;
 using UnitySus2021.Util;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// EnemyのTaskの基底クラス.
+    /// </summary>
     public abstract class EnemyTaskBase : ITask<EEnemyTaskType> {
         public virtual EEnemyTaskType TaskType { get; protected set; } = EEnemyTaskType.Idle;
+        
+        /// <summary>
+        /// Enemy自身のGameObjectの参照.
+        /// </summary>
         protected GameObject self { get; } = null;
+        
+        /// <summary>
+        /// PlayerのGameObjectの参照.
+        /// </summary>
         protected GameObject player { get; } = null;
+        
+        /// <summary>
+        /// Enemyのステータス.
+        /// </summary>
         protected EnemyStatus enemyStatus { get; } = null;
 
         protected EnemyTaskBase(GameObject self) {

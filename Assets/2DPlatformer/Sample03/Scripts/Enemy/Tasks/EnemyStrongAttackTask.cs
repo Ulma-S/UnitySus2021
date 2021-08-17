@@ -1,6 +1,9 @@
 using UnityEngine;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// Enemyの強攻撃Taskを管理するクラス.
+    /// </summary>
     public class EnemyStrongAttackTask : EnemyTaskBase {
         public override EEnemyTaskType TaskType { get; protected set; } = EEnemyTaskType.StrongAttack;
 
@@ -12,7 +15,10 @@ namespace UnitySus2021.Sample03 {
         }
         
         public override void OnEnter() {
+            //強攻撃のアニメーション再生.
             m_animator.SetBool(IsStrongAttack, true);
+            
+            //方向の設定 (攻撃中は方向を変更しない).
             ApplyLocalScale();
         }
 
@@ -27,6 +33,7 @@ namespace UnitySus2021.Sample03 {
         }
 
         public override void OnExit() {
+            //強攻撃のアニメーション終了.
             m_animator.SetBool(IsStrongAttack, false);
         }
     }

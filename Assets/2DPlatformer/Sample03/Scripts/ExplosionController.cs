@@ -1,6 +1,9 @@
 using UnityEngine;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// 爆発のGameObjectを制御するクラス.
+    /// </summary>
     public class ExplosionController : MonoBehaviour {
         [SerializeField] private SpriteRenderer m_sprite;
         [SerializeField] private Animator m_animator;

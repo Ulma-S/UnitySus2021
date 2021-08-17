@@ -4,9 +4,23 @@ using UnitySus2021.Sample02;
 using UnitySus2021.Util;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// PlayerのState用基底クラス.
+    /// </summary>
     public abstract class PlayerStateBase : MonoBehaviour {
+        /// <summary>
+        /// StateMachineの参照.
+        /// </summary>
         protected PlayerStateMachine stateMachine { get; private set; }
+        
+        /// <summary>
+        /// Playerのステータス.
+        /// </summary>
         protected PlayerStatus playerStatus { get; private set; }
+        
+        /// <summary>
+        /// 入力の参照.
+        /// </summary>
         protected IInputProvider inputProvider { get; private set; }
 
         private void Start() {
@@ -18,8 +32,9 @@ namespace UnitySus2021.Sample03 {
 
         /// <summary>
         /// Start関数の代用メソッド.
-        /// Start関数をvirtualにすると、派生クラスでbase.Start()のように呼び出す必要があるが、
-        /// これはミスを誘発する点で好ましくない.
+        /// (Start関数をvirtualにすると、派生クラスでbase.Start()のように呼び出す必要があるが、
+        /// これはミスを誘発する点で好ましくない.)
+        /// (Template Method パターン)
         /// </summary>
         protected abstract void Initialize();
 

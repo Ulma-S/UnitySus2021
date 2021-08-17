@@ -519,10 +519,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1065417255032455418, guid: 8bbf86e1cba612749a99795f1e260a3e, type: 3}
-      propertyPath: m_csvReader
-      value: 
-      objectReference: {fileID: 6662656587331563627}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bbf86e1cba612749a99795f1e260a3e, type: 3}
 --- !u!1001 &6365759739421422758
@@ -576,10 +572,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6365759739318905479, guid: ab8e05a502882064d8a1cce7748378f3, type: 3}
-      propertyPath: m_sr
-      value: 
-      objectReference: {fileID: 3976199347518674069, guid: 73faa5ca69f311445a64bec80a5d9701, type: 3}
     - target: {fileID: 6365759739318905529, guid: ab8e05a502882064d8a1cce7748378f3, type: 3}
       propertyPath: m_Name
       value: MazeSearcher
@@ -643,17 +635,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0cd86a8d7e4d044b9be58c37ca6c0fd, type: 3}
---- !u!114 &6662656587331563627 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7493629222860471643, guid: c0cd86a8d7e4d044b9be58c37ca6c0fd, type: 3}
-  m_PrefabInstance: {fileID: 6662656587331563626}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67879b702a8a2314f9112fda4b9d1d97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7625203302326365316
 PrefabInstance:
   m_ObjectHideFlags: 0

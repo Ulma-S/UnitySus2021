@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// Playerの状態の種類.
+    /// </summary>
     public enum EPlayerStateType {
         None,
         Idle,
@@ -11,10 +14,23 @@ namespace UnitySus2021.Sample03 {
         Death,
     }
     
+    /// <summary>
+    /// PlayerのState(状態)を管理するクラス (Stateパターン).
+    /// </summary>
     public class PlayerStateMachine : MonoBehaviour {
+        /// <summary>
+        /// 全ての状態を格納する連想配列.
+        /// </summary>
         private readonly Dictionary<EPlayerStateType, PlayerStateBase> m_stateMap = new Dictionary<EPlayerStateType, PlayerStateBase>();
+        
+        /// <summary>
+        /// 現在の状態の種類.
+        /// </summary>
         public EPlayerStateType CurrentStateType { get; private set; } = EPlayerStateType.None;
 
+        /// <summary>
+        /// 現在の状態.
+        /// </summary>
         private PlayerStateBase m_currentState {
             get {
                 if (m_stateMap.ContainsKey(CurrentStateType)) {

@@ -1,6 +1,10 @@
 using System.Collections.ObjectModel;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// TaskSystem用インターフェース.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface ITaskSystem<T> { 
         /// <summary>
         /// 現在積まれているTask typeのリスト.

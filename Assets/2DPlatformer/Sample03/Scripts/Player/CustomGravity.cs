@@ -3,6 +3,9 @@ using UnitySus2021.Sample02;
 using UnitySus2021.Util;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// 独自の重力を制御するクラス.
+    /// </summary>
     public class CustomGravity : MonoBehaviour {
         [SerializeField] private Rigidbody2D m_rb;
         private float m_localGravityScale;
@@ -12,6 +15,7 @@ namespace UnitySus2021.Sample03 {
         }
 
         private void Update() {
+            //重力の更新.
             ApplyLocalGravity();
         }
 

@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine;
 
 namespace UnitySus2021.Sample06 {
+    /// <summary>
+    /// 迷路の経路を探索して移動させるクラス.
+    /// </summary>
     public class CharacterMover : MonoBehaviour {
         private MazeSearcher m_mazeSearcher;
         [SerializeField] private float m_moveSpeed = 2f;
@@ -23,7 +26,10 @@ namespace UnitySus2021.Sample06 {
         }
 
 
-        //最短経路を移動させるコルーチン.
+        /// <summary>
+        /// 最短経路を移動させるコルーチン.
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator MovePathCoroutine() {
             transform.position = m_mazeSearcher.Path[0];
 

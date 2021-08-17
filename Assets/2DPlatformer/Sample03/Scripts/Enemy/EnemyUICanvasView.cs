@@ -1,8 +1,12 @@
 using UnityEngine;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// Enemyの上に表示するUIのCanvasを制御するクラス.
+    /// </summary>
     public class EnemyUICanvasView : MonoBehaviour {
         private void Update() {
+            //方向の更新.
             ApplyLocalScale();
         }
 

@@ -2,15 +2,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnitySus2021.Sample05 {
+    /// <summary>
+    /// 迷路を生成するクラス.
+    /// </summary>
     public class MazeGenerator : MonoBehaviour {
+        [SerializeField] private string m_fileName = "UnitySus2021";
         [SerializeField] private SpriteRenderer m_mapTile;
+        
         private List<List<int>> m_mapData;
+        
+        /// <summary>
+        /// マップのデータ.
+        /// </summary>
         public IReadOnlyList<IReadOnlyList<int>> MapData => m_mapData;
         
         private void Awake() {
             var csvReader = FindObjectOfType<CsvReader>();
             
-            var csvData = new List<string[]>(csvReader.Load());
+            var csvData = new List<string[]>(csvReader.Load(m_fileName));
             
             GenerateMap(csvData);
         }

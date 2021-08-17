@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679a7faa391392d439a350cb2daff423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_csvReader: {fileID: 0}
+  m_fileName: UnitySus2021
   m_mapTile: {fileID: 3976199347518674069, guid: e8f4b413ca4a0984caab954ebd3fd92d, type: 3}

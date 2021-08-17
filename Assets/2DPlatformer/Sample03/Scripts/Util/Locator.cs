@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace UnitySus2021.Util {
     /// <summary>
-    /// ServiceLoactorパターン.
+    /// 型に対応するインスタンスを登録し、管理するクラス.
+    /// (ServiceLoactorパターン)
     /// </summary>
     public static class Locator {
         /// <summary>

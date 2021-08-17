@@ -2,20 +2,30 @@ using System.Collections;
 using UnityEngine;
 
 namespace UnitySus2021.Sample03 {
-    public class PlayerSpriteController : MonoBehaviour {
+    /// <summary>
+    /// Playerの見た目を制御するクラス.
+    /// </summary>
+    public class PlayerViewController : MonoBehaviour {
         [SerializeField] private SpriteRenderer m_sr;
         [SerializeField] private PlayerHpModel m_hpModel;
+        private IEnumerator m_blinkCoroutine;
 
         private void Start() {
+            //ダメージを受けた時に呼ばれるコールバックに設定する.
             m_hpModel.OnDamagedHandler += OnDamaged;
+
+            m_blinkCoroutine = BlinkCoroutine();
         }
 
         private void OnDamaged() {
-            StartCoroutine(BlinkCoroutine());
+            StopCoroutine(m_blinkCoroutine);
+            m_blinkCoroutine = null;
+            m_blinkCoroutine = BlinkCoroutine();
+            StartCoroutine(m_blinkCoroutine);
         }
 
         /// <summary>
-        /// ダメージを受けると点滅させる.
+        /// ダメージを受けるとPlayerを点滅させるコルーチン.
         /// </summary>
         /// <returns></returns>
         private IEnumerator BlinkCoroutine() {

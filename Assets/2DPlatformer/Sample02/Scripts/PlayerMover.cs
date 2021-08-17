@@ -14,7 +14,11 @@ namespace UnitySus2021.Sample02 {
         [SerializeField] private PlayerStatus m_playerStatus;
         // --------------------- //
         
+        /// <summary>
+        /// 接地しているか?
+        /// </summary>
         private bool m_isGround = false;
+        
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int IsJump = Animator.StringToHash("IsJump");
 
@@ -23,6 +27,7 @@ namespace UnitySus2021.Sample02 {
         }
 
         private void Update() {
+            //移動の更新.
             Move();
             
             //地上にいるときジャンプが入力されたらジャンプする.
@@ -30,7 +35,10 @@ namespace UnitySus2021.Sample02 {
                 Jump();
             }
             
+            //方向の更新.
             ApplyDirection();
+            
+            //重力の更新.
             ApplyLocalGravity();
         }
 
@@ -45,6 +53,7 @@ namespace UnitySus2021.Sample02 {
             velocity.x = m_playerStatus.MoveSpeed * m_inputProvider.HorizontalInput;
             m_rb.velocity = velocity;
             
+            //AnimatorのSpeedに速度を渡す.
             m_animator.SetFloat(Speed, Mathf.Abs(m_rb.velocity.x));
         }
 
@@ -94,8 +103,11 @@ namespace UnitySus2021.Sample02 {
 
         private void OnCollisionEnter2D(Collision2D other) {
             if (other.gameObject.CompareTag("Ground")) {
-                m_isGround = true;
-                m_animator.SetBool(IsJump, false);
+                //落下中なら
+                if (m_rb.velocity.y <= 0f) {
+                    m_isGround = true;
+                    m_animator.SetBool(IsJump, false);
+                }
             }
         }
 

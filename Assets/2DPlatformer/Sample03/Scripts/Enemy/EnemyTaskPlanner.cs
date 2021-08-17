@@ -1,24 +1,31 @@
 using UnityEngine;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// EnemyのTaskの種類.
+    /// </summary>
     public enum EEnemyTaskType {
-        //None,
         Idle,
         Run,
         WeakAttack,
         StrongAttack,
     }
     
+    /// <summary>
+    /// EnemyのTaskのプランニングをするクラス.
+    /// </summary>
     public class EnemyTaskPlanner : MonoBehaviour {
         [SerializeField] private EnemyRangeController m_rangeController;
         private readonly ITaskSystem<EEnemyTaskType> m_taskSystem = new TaskSystem<EEnemyTaskType>();
         
         private void Start() {
+            //Taskの登録.
             m_taskSystem.RegisterTask(new EnemyIdleTask(gameObject));
             m_taskSystem.RegisterTask(new EnemyRunTask(gameObject));
             m_taskSystem.RegisterTask(new EnemyWeakAttackTask(gameObject));
             m_taskSystem.RegisterTask(new EnemyStrongAttackTask(gameObject));
             
+            //Taskの設定.
             m_taskSystem.EnqueueTask(EEnemyTaskType.Idle);
         }
 
@@ -29,10 +36,15 @@ namespace UnitySus2021.Sample03 {
                     SelectTask();
                 }
 
+                //Taskの更新.
                 m_taskSystem.UpdateTask();
             }
         }
-
+        
+        /// <summary>
+        /// Taskの選択をするメソッド.
+        /// (ここを変えると敵の攻撃パターンを変えられます.)
+        /// </summary>
         private void SelectTask() {
             //Playerが範囲内にいる場合
             if (m_rangeController.IsInRange) {

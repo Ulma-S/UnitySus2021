@@ -1,6 +1,9 @@
 using UnityEngine;
 
 namespace UnitySus2021.Sample04 {
+    /// <summary>
+    /// 迷路を生成するクラス.
+    /// </summary>
     public class MazeGenerator : MonoBehaviour {
         [SerializeField] private SpriteRenderer m_mapTile;
         
@@ -21,6 +24,9 @@ namespace UnitySus2021.Sample04 {
             GenerateMap();
         }
 
+        /// <summary>
+        /// マップを生成するメソッド.
+        /// </summary>
         private void GenerateMap() {
             var height = m_mapData.GetLength(0);
             var width = m_mapData.Length / height;

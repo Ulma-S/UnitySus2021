@@ -1,6 +1,9 @@
 using UnityEngine;
 
 namespace UnitySus2021.Sample03 {
+    /// <summary>
+    /// Enemyの移動Taskを管理するクラス.
+    /// </summary>
     public class EnemyRunTask : EnemyTaskBase {
         public override EEnemyTaskType TaskType { get; protected set; } = EEnemyTaskType.Run;
 
@@ -8,6 +11,9 @@ namespace UnitySus2021.Sample03 {
         private readonly Rigidbody2D m_rb;
         private static readonly int Speed = Animator.StringToHash("Speed");
 
+        /// <summary>
+        /// Task開始からの経過時間.
+        /// </summary>
         private float m_elapsedTime = 0f;
 
         public EnemyRunTask(GameObject parent) : base(parent) {
@@ -16,6 +22,7 @@ namespace UnitySus2021.Sample03 {
         }
         
         public override void OnEnter() {
+            //経過時間のリセット.
             m_elapsedTime = 0f;
         }
 
