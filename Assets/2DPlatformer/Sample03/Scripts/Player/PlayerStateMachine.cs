@@ -8,6 +8,7 @@ namespace UnitySus2021.Sample03 {
         Run,
         Jump,
         Attack,
+        Death,
     }
     
     public class PlayerStateMachine : MonoBehaviour {
