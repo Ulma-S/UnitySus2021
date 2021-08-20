@@ -76,6 +76,7 @@ namespace UnitySus2021.Sample03 {
         //デバッグ用.
 #if UNITY_EDITOR
         private void OnGUI() {
+            //現在と前回のTaskの種類を出力.
             GUILayout.Label("Current:" + m_taskSystem.CurrentTaskType + ", prev:" + m_taskSystem.PrevTaskType);
         }
 #endif

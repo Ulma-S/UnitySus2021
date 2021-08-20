@@ -15,12 +15,7 @@ namespace UnitySus2021.Sample02 {
         /// ジャンプ力.
         /// </summary>
         public float JumpForce;
-        
-        /// <summary>
-        /// 重力.
-        /// </summary>
-        public float LocalGravityScale;
-        
+
         /// <summary>
         /// 最大HP.
         /// </summary>

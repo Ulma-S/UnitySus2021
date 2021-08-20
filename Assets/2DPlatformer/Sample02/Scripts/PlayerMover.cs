@@ -37,9 +37,6 @@ namespace UnitySus2021.Sample02 {
             
             //方向の更新.
             ApplyDirection();
-            
-            //重力の更新.
-            ApplyLocalGravity();
         }
 
         
@@ -90,16 +87,7 @@ namespace UnitySus2021.Sample02 {
             }
             transform.localScale = localScale;
         }
-
-
-        /// <summary>
-        /// 重力を反映する.
-        /// </summary>
-        private void ApplyLocalGravity() {
-            var velocity = m_rb.velocity;
-            velocity.y -= m_playerStatus.LocalGravityScale * Time.deltaTime;
-            m_rb.velocity = velocity;
-        }
+        
 
         private void OnCollisionEnter2D(Collision2D other) {
             if (other.gameObject.CompareTag("Ground")) {

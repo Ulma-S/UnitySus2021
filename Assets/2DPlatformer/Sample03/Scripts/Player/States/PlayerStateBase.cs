@@ -27,6 +27,7 @@ namespace UnitySus2021.Sample03 {
             stateMachine = GetComponent<PlayerStateMachine>();
             playerStatus = Locator.Resolve<PlayerStatus>();
             inputProvider = Locator.Resolve<IInputProvider>();
+            
             Initialize();
         }
 

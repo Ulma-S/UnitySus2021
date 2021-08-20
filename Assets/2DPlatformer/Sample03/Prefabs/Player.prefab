@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6315839714552979700}
   - component: {fileID: 4305298189849280684}
   - component: {fileID: 1249366445506839665}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,6 @@ GameObject:
   - component: {fileID: 9163573713181159655}
   - component: {fileID: 9163573713181159657}
   - component: {fileID: 9163573713181159654}
-  - component: {fileID: 1045264393938447943}
   - component: {fileID: 7000264116413883105}
   - component: {fileID: 1454397887}
   - component: {fileID: 1454397881}
@@ -92,7 +91,8 @@ GameObject:
   - component: {fileID: 5575433873420852293}
   - component: {fileID: 5829169655721894788}
   - component: {fileID: 5159671698549427040}
-  m_Layer: 0
+  - component: {fileID: 3760864071065380638}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -180,11 +180,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &9163573713181159657
 Animator:
@@ -221,19 +221,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.05}
   m_Size: {x: 0.4, y: 1.4}
   m_Direction: 0
---- !u!114 &1045264393938447943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9163573713181159660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b208c0dad372d4b8c29b3ab373af4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_rb: {fileID: 9163573713181159655}
 --- !u!114 &7000264116413883105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_animator: {fileID: 9163573713181159657}
   m_rb: {fileID: 9163573713181159655}
+  m_collisionDetector: {fileID: 3760864071065380638}
 --- !u!114 &5575433873420852293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,3 +328,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_sr: {fileID: 9163573713181159659}
   m_hpModel: {fileID: 5829169655721894788}
+--- !u!114 &3760864071065380638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9163573713181159660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a7acb5f8aa7a3408be694aeed82c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_layerMask:
+    serializedVersion: 2
+    m_Bits: 179
+  m_rayLength: 0.8

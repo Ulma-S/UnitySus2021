@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 848629540}
   - component: {fileID: 848629542}
   - component: {fileID: 848629541}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HPGage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 872626994}
   - component: {fileID: 872626993}
   - component: {fileID: 2351916474503439892}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: EnemyUICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 1475060791}
   - component: {fileID: 1475060793}
   - component: {fileID: 1475060792}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyHp
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 1558359051}
   - component: {fileID: 1558359050}
   - component: {fileID: 8748799155979943234}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 6643337839759364036}
   - component: {fileID: 773905988680905914}
   - component: {fileID: 524459775}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyStrongWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 4316930159623219373}
   - component: {fileID: 4316930159623219372}
   - component: {fileID: 8134192064554251151}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,9 +518,8 @@ GameObject:
   - component: {fileID: 4316930159791152814}
   - component: {fileID: 4316930159791152815}
   - component: {fileID: 4316930159791152812}
-  - component: {fileID: 4316930159791152813}
   - component: {fileID: 4316930159791152811}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -631,7 +630,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -679,19 +678,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.14, y: 0.66}
   m_EdgeRadius: 0
---- !u!114 &4316930159791152813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4316930159791152819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b208c0dad372d4b8c29b3ab373af4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_rb: {fileID: 4316930159791152814}
 --- !u!114 &4316930159791152811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,7 +702,7 @@ GameObject:
   - component: {fileID: 1662938926634521395}
   - component: {fileID: 9143835885319056769}
   - component: {fileID: 4316930159342113473}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyWeakWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
