@@ -101,7 +101,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -157,4 +157,3 @@ MonoBehaviour:
   m_rb: {fileID: 9163573713181159655}
   m_animator: {fileID: 9163573713181159657}
   m_playerStatus: {fileID: 11400000, guid: aa1e41a3aad6ca9448220d8131eae0f4, type: 2}
-  m_inputProvider: {fileID: 5104534818211707132, guid: 899e27bf6d8c42845bf1dbb3ad1bceee, type: 3}
